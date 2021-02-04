@@ -12,14 +12,14 @@
 #undef free
 
 size_t write(int fd, const void *buf, size_t count) {
-	printf("write() invoqued\n");
+	printf("write() invoked\n");
 	static void *(*func)();
 	func = (void *(*)())dlsym(RTLD_NEXT, "write");
 	return (size_t)func(fd, buf, count);
 }
 
 void free(void *ptr) {
-	printf("free() invoqued, denying it\n");
+	printf("free() invoked, denying it\n");
 	// static void *(*func)();
 	// func = (void *(*)())dlsym(RTLD_NEXT, "free");
 	return ;
